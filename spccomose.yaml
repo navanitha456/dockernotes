@@ -1,0 +1,125 @@
+---
+version: "3.9"
+services:
+  springpetclinic:
+    build: 
+      context: .
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode:host
+    networks:
+      - spring-net
+    volumes:
+      - type: volume
+        source: spring-data
+        target: /tmp    
+networks:
+  spring-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24        
+volumes:
+  spring-data:
+
+
+---
+version: "3.9"
+services:
+  gameoflife:
+    build:
+      context: C:\Users\DELL\Docker\gol.dockerfile
+      dockerfile: gol.dockerfile
+    volumes:
+      - type: volume
+        source: myvolume
+        target: /spc
+    networks:
+      hema_net:
+        driver: bridge
+        ipam:
+          config:
+            - subnet: 192.168.0.0/24
+    
+volumes:
+  myvolume:
+networks:
+  hema_net:
+    
+
+
+
+
+
+
+---
+version: '3.9'
+services:
+  mysql:
+     image: mysql:8.0.33
+     ports:
+       - "3306:3306"
+  volume
+environment variable:
+  - MYSQL_ROOT_PASSWORD: rootroot
+  - MYSQL_DATABASE: mysqldb
+  - MYSQL_USER: mysql
+  - MYSQL_PASSWORD: rootroot
+volumes: 
+  - type: vo
+
+networks: 
+  hello-net:
+    driver: bridge
+ports:
+  - 8080:80
+depends_on:
+  - mysqldb
+
+# docker compose file for nginx---
+-------------
+
+version: '3.9'
+services:
+  web:
+    image: nginx:latest
+    networks:
+      - hello-net
+    volumes:
+      - type: volume
+        source: my-vol
+        target: /tools
+networks:
+  hello-net:
+    driver: bridge
+
+
+
+
+
+
+
+
+# docker compose file for apache2
+
+version: '3.8'
+services:
+  app:
+    image: httpd
+    ports:
+      - "8080:80"
+  db:
+    image: mysql
+
+# spring petclinic compose.yaml
+---
+version: "3.9"
+
+
+
+
+
+
+    
