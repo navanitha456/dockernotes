@@ -1,0 +1,4 @@
+FROM :apacheignite 
+LABLE :name "neelima" organisation "qt" purpose "learning cource"
+ADD:https://s3-devops-bucketversion.s3.amazonaws.com/2023-09-20-12-11-56-4B86EFD027A52C06
+PORT:8080
